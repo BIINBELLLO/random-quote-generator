@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { NgxSpinnerService } from "ngx-spinner";
 import { Quotes } from "../models/quotes";
 import { QuotesService } from "../services/quotes.service";
 
@@ -14,7 +15,8 @@ export class AuthorQuotesComponent implements OnInit {
   constructor(
     private quotesService: QuotesService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit() {
@@ -29,12 +31,14 @@ export class AuthorQuotesComponent implements OnInit {
   }
 
   getAllQuotesFromAuthor(author: string) {
+    this.spinner.show();
     this.quotesService.getAuthorQuotes(author).subscribe({
       next: (response) => {
-        console.log(response);
+        this.spinner.hide();
         this.quoteList = response;
       },
       error: (e) => {
+        this.spinner.hide();
         alert("An error occured! Please try again!");
       },
     });

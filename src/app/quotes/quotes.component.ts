@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { NgxSpinnerService } from "ngx-spinner";
 import { Quotes } from "../models/quotes";
 import { QuotesService } from "../services/quotes.service";
 
@@ -16,18 +17,25 @@ export class QuotesComponent implements OnInit {
     quoteGenre: "",
   };
 
-  constructor(private quotesService: QuotesService, private router: Router) {}
+  constructor(
+    private quotesService: QuotesService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
     this.getAnyRandomQuote();
   }
 
   getAnyRandomQuote() {
+    this.spinner.show();
     this.quotesService.getRandomQuotes().subscribe({
       next: (response) => {
+        this.spinner.hide();
         this.randomQuote = response[0];
       },
       error: (e) => {
+        this.spinner.hide();
         alert("An error occured! Please try again!");
       },
     });
