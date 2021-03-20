@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="d-flex justify-content-end my-3">
+    <p class="hoverable" (click)="getAnyRandomQuote()">
+      random <i class="fa fa-random" aria-hidden="true"></i>
+    </p>
+  </div>
+  <div class="row justify-content-center mt-3 mt-md-5">
+    <div class="col-12 col-sm-8 mt-3 mt-md-5">
+      <div class="px-5 quote-holder">
+        <p>
+          {{ randomQuote.quoteText }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center my-md-5 mb-5">
+    <div class="col-12 col-sm-8">
+      <div
+        class="px-3 quote-owner hoverable"
+        (click)="getAllQuotesFromAuthor()"
+      >
+        <div class="">
+          <div class="holder-bg px-4 py-4 d-flex justify-content-between">
+            <div class="names">
+              <p class="name">{{ randomQuote.quoteAuthor }}</p>
+              <p class="job">{{ randomQuote.quoteGenre }}</p>
+            </div>
+            <div class="icon text-white my-auto">
+              <i class="fa fa-arrow-right fa-2x"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

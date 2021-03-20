@@ -1,0 +1,68 @@
+.hoverable {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.quote-holder {
+  border-left: 7px solid #f7df94;
+  p {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 120%;
+    color: #000000;
+  }
+
+  @media screen and (max-width: 442px) {
+    border-left: 4px solid #f7df94;
+    p {
+      font-size: 22px;
+    }
+  }
+}
+.quote-owner {
+  border-left: 7px solid white;
+  p.name {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #4f4f4f;
+  }
+
+  p.job {
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #828282;
+  }
+
+  .holder-bg {
+    &:hover {
+      background-color: #000000;
+      p {
+        color: white;
+      }
+
+      .icon {
+        display: block;
+      }
+    }
+  }
+
+  @media screen and (max-width: 442px) {
+    p.name {
+      font-size: 20px;
+    }
+    p.job {
+      font-size: 12px;
+    }
+  }
+}
